@@ -1,6 +1,6 @@
 import { router } from 'pelelajs'
-import { personajeService } from './lib/personajeService'
 import type { Personaje } from './lib/personaje'
+import { personajeService } from './lib/personajeService'
 
 export class Home {
   personajes: Personaje[] = []
