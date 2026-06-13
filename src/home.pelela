@@ -1,0 +1,18 @@
+<div class="card">
+  <h1>Rick & Morty</h1>
+
+  <pelela view-model="Home">
+    <div class="input-group">
+      <label for="texto-input">Personajes que contengan en su nombre</label>
+      <input id="texto-input" type="text" bind-value="texto" placeholder="Buscar personajes..."/>
+    </div>
+
+    <button click="buscar">Buscar</button>
+
+    <div class="personajes">
+      <div for-each="personaje of personajes" class="personaje" click="verPersonaje">
+        <personaje-card prop-imagen="personaje.imagen" prop-nombre="personaje.nombre"></personaje-card>
+      </div>
+    </div>
+  </pelela>
+</div>

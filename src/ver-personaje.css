@@ -1,0 +1,21 @@
+img {
+  width: 200px;
+  height: auto;
+}
+
+.personaje-data {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  gap: 10px;
+  height: 2rem;
+  padding: 1rem;
+  align-items: center;
+}
+
+.title {
+  font-weight: bold;
+}
+
+button {
+  margin-top: 2rem;
+}

@@ -1,0 +1,6 @@
+<component view-model="PersonajeCard">
+  <div class="personaje-card">
+    <img bind-src="imagen" />
+    <span bind-content="nombre"></span>
+  </div>
+</component>
