@@ -12,7 +12,7 @@ export class VerPersonaje {
       console.info('Datos del personaje:', this.personaje)
     })
   }
-  
+
   volver() {
     router.navigateTo('/personajes')
   }

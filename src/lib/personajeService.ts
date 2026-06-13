@@ -64,7 +64,7 @@ const toPersonaje = ({
   gender,
   image,
 }: {
-  id: number,
+  id: number
   name: string
   status: string
   species: string

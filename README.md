@@ -1,4 +1,4 @@
-# 🔄 Conversor Pelela
+# 📺 Personajes: Rick y Morty
 
 [![CI](https://github.com/uqbar-project/eg-personajes-pelela/actions/workflows/ci.yml/badge.svg)](https://github.com/uqbar-project/eg-personajes-pelela/actions/workflows/ci.yml)
 
@@ -13,6 +13,6 @@ pnpm dev
 
 Abrí tu navegador e ingresá a [http://localhost:5173](http://localhost:5173) para ver la aplicación funcionando en vivo.
 
-## 🔎 Búsqueda de países
+## 🔎 Búsqueda de personajes
 
 TODO

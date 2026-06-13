@@ -7,5 +7,4 @@ export class Personaje {
     public especie: string,
     public genero: string,
   ) {}
-
 }
