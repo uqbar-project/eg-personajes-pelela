@@ -12,8 +12,8 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0(date-fns@4.4.0)
       pelelajs:
-        specifier: 0.7.1
-        version: 0.7.1
+        specifier: 1.0.0
+        version: 1.0.0
     devDependencies:
       '@biomejs/biome':
         specifier: 2.3.8
@@ -25,8 +25,8 @@ importers:
         specifier: 7.3.2
         version: 7.3.2
       vite-plugin-pelelajs:
-        specifier: 0.6.0
-        version: 0.6.0(vite@7.3.2)
+        specifier: 0.7.1
+        version: 0.7.1(vite@7.3.2)
 
 packages:
 
@@ -455,8 +455,8 @@ packages:
   noop6@1.0.10:
     resolution: {integrity: sha512-WZvuCILZFZHK+WuqCQwxLBGllkBK1ct8s8Mu9FMDbEsBE6/bqNxyFGbX7Xky+6bYFL8X2Ou4Cis4CJyrwXLvQA==}
 
-  pelelajs@0.7.1:
-    resolution: {integrity: sha512-7n3uapuApM/kY1KxgF2UCWYuTubEYIzeQAPSkUCknNiEJeFzrG6PZ1xvsn2UF6tAH93Ttve7olwtag9wIMNdXQ==}
+  pelelajs@1.0.0:
+    resolution: {integrity: sha512-slekvfQwXJJIWRfYZPgzhDzLtp+1D5GjMU0SC2quC95pwJKgqd+nFm45U4gP7/3C4lKfZVhdtI26hJlZB6Vc9w==}
     hasBin: true
 
   picocolors@1.1.1:
@@ -494,8 +494,8 @@ packages:
   ul@5.2.16:
     resolution: {integrity: sha512-v1YrSEsJZpJsywzF/MKgsQwMdOwBlwwmNiUOJh/yX6FHrq7dYjeua1YOhLV0q0KioqEFZC4P7MsKmpEsGdZz3w==}
 
-  vite-plugin-pelelajs@0.6.0:
-    resolution: {integrity: sha512-FLOoT4y79Sg9VH/ERjiKqVMAxEZVzvAnz497b4i7TBTQgPBxaUjZH1PQ64OtlkQ6HmoEZwoB5807Ed5ah/ROuQ==}
+  vite-plugin-pelelajs@0.7.1:
+    resolution: {integrity: sha512-lsslb5BGbC7O/7dR+p/81aQg/XlWkUMHhCHpiBw9wBOfHbEMjMz6/wBFfHlvtCHOzuqfnGE0ywlK+Vd3PHjNkA==}
     peerDependencies:
       vite: ^7.2.4
 
@@ -811,7 +811,7 @@ snapshots:
 
   noop6@1.0.10: {}
 
-  pelelajs@0.7.1:
+  pelelajs@1.0.0:
     dependencies:
       chalk: 5.6.2
       cli-box: 6.0.11
@@ -878,9 +878,9 @@ snapshots:
       deffy: 2.2.5
       typpy: 2.4.0
 
-  vite-plugin-pelelajs@0.6.0(vite@7.3.2):
+  vite-plugin-pelelajs@0.7.1(vite@7.3.2):
     dependencies:
-      pelelajs: 0.7.1
+      pelelajs: 1.0.0
       vite: 7.3.2
 
   vite@7.3.2:

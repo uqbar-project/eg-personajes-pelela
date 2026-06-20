@@ -1,14 +1,15 @@
 img {
   width: 200px;
   height: auto;
+  border-radius: 10px;
 }
 
 .personaje-data {
-  display: grid;
-  grid-template-columns: 20% 80%;
+  display: flex;
+  flex-direction: row;
   gap: 10px;
   height: 2rem;
-  padding: 1rem;
+  padding: 0.5rem;
   align-items: center;
 }
 
@@ -17,5 +18,6 @@ img {
 }
 
 button {
+  padding: 0.5rem 2rem;
   margin-top: 2rem;
 }

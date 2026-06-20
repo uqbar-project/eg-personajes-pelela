@@ -48,9 +48,15 @@ class PersonajeService {
   }
 
   private async get<T>(url: string): Promise<T> {
-    const response = await fetch(url)
+    let response: Response
+    try {
+      response = await fetch(url)
+    } catch (err) {
+      throw new Error('Error de red al consultar el servidor', { cause: err })
+    }
     if (!response.ok) {
-      throw new Error(`Error al obtener datos de ${url}`)
+      const body = await response.text().catch(() => '')
+      throw new Error(`Error ${response.status} al obtener datos de ${url}: ${body}`)
     }
     return response.json() as Promise<T>
   }

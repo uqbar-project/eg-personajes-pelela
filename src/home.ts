@@ -4,10 +4,19 @@ import { personajeService } from './lib/personajeService'
 
 export class Home {
   personajes: Personaje[] = []
-  texto = ''
+  personajeABuscar = ''
+  mensajeError = ''
 
   async buscar(): Promise<void> {
-    this.personajes = await personajeService.buscarPersonaje(this.texto)
+    try {
+      this.personajes = await personajeService.buscarPersonaje(this.personajeABuscar)
+    } catch (error: unknown) {
+      console.error(error)
+      this.mensajeError = (error as Error).message
+      setTimeout(() => {
+        this.mensajeError = ''
+      }, 5000)
+    }
   }
 
   verPersonaje({ personaje }: { personaje: Personaje }) {

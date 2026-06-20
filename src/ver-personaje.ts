@@ -5,12 +5,9 @@ import { personajeService } from './lib/personajeService'
 export class VerPersonaje {
   personaje!: Personaje
 
-  initialize() {
+  async initialize() {
     const identificador = Number(router.urlParameters().identificador)
-    personajeService.datosDePersonaje(identificador).then((_personaje) => {
-      this.personaje = _personaje
-      console.info('Datos del personaje:', this.personaje)
-    })
+    this.personaje = await personajeService.datosDePersonaje(identificador)
   }
 
   volver() {
