@@ -6,18 +6,23 @@ img {
 
 .personaje-data {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 10px;
-  height: 2rem;
   padding: 0.5rem;
-  align-items: center;
+  align-items: start;
 }
 
 .title {
   font-weight: bold;
+  font-size: 1.2rem;
 }
 
 button {
   padding: 0.5rem 2rem;
   margin-top: 2rem;
+}
+
+.state {
+  color: rgb(117, 116, 116);
+  font-weight: bold;
 }

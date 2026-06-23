@@ -4,14 +4,14 @@
   <pelela view-model="Home">
     <div class="input-group">
       <label for="texto-input">Personajes que contengan en su nombre</label>
-      <input id="texto-input" type="text" bind-value="personajeABuscar" placeholder="Buscar personajes..."/>
+      <input id="texto-input" type="text" bind-value="personajeABuscar" placeholder="Buscar personajes..." enter="buscar"/>
     </div>
 
     <button click="buscar">Buscar</button>
 
     <div class="personajes">
       <div for-each="personaje of personajes" class="personaje-card" click="verPersonaje">
-        <img class="personaje-imagen" bind-src="personaje.imagen" />
+        <img class="personaje-imagen" bind-src="personaje.imagen" bind-alt="personaje.nombre"/>
         <span class="personaje-nombre" bind-content="personaje.nombre"></span>
       </div>
     </div>

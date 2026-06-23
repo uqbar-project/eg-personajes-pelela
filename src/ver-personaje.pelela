@@ -5,15 +5,8 @@
   </div>
   <hr/>
   <div class="personaje-data">
-    <div class="title">Estado:</div>
-    <div bind-content="personaje.estado"></div>
-  </div>
-  <div class="personaje-data">
-    <div class="title">Especie:</div>
-    <div bind-content="personaje.especie"></div>
-  </div>
-  <div class="personaje-data">
-    <div class="title">Género:</div>
+    <div bind-content="personaje.especie" class="title"></div>
+    <div bind-content="personaje.estado" class="state"></div>
     <div bind-content="personaje.genero"></div>
   </div>
   <button data-testid="volver" class="botonera" click="volver">Volver</button>
