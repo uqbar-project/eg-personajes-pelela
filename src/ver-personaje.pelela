@@ -1,6 +1,6 @@
 <pelela view-model="VerPersonaje">
   <div class="titulo">
-    <img bind-src="personaje.imagen" />
+    <img bind-src="personaje.imagen" bind-alt="personaje.nombre" />
     <h2 bind-content="personaje.nombre"></h2>
   </div>
   <hr/>
