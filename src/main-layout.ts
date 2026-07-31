@@ -1,2 +1,1 @@
-export class MainLayout {
-}
+export class MainLayout {}
