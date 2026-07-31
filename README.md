@@ -63,6 +63,8 @@ donde `2` es el identificador de nuestro personaje.
 
 ## Routing en Pelela
 
+### Primera versión
+
 El archivo `routes.ts` nos permite definir un mecanismo de ruteo, es decir, que asociamos un path a un componente Pelela para poder hacer la navegación de nuestra aplicación:
 
 ```ts
@@ -78,6 +80,66 @@ En esta definición
 - por defecto, la URL raíz (`/`) se asocia al componente Home (recordamos que un componente es una tríada .pelela, .ts y opcionalmente un .css)
 - `/personaje/:identificador` representa una ruta donde hay algo fijo `/personaje` y algo dinámico: `/:identificador`, que indica que nos interesa almacenar como variable el valor que nos pasen dentro de esa ruta
 - cualquier otra ruta: (`*`) nos lleva al Home. Si por error escribimos `http://localhost:5173/personajines` el router de Pelela nos dirigirá hacia la página home. Esta ruta se suele llamar `wildcard` o `catch-all route` en otras tecnologías.
+
+### Agregado de un layout
+
+Pelela permite definir un _layout_ de manera de poder tener una imagen de marca común para toda la aplicación. Así:
+
+- podemos definir un header que tenga un título y un menú de opciones + un footer
+- o en este caso cada página se inserta dentro de una **card** y se le agrega un footer
+
+No necesitamos copiar y pegar la misma definición en cada página, sino que en nuestro archivo de routing armamos un sistema de layout común:
+
+```ts
+export const routes: RouteDefinition[] = [
+  {
+    path: '',
+    layout: MainLayout,
+    children: [
+      { path: '/personajes', component: Home },
+      { path: '/personaje/:identificador', component: VerPersonaje },
+    ],
+  },
+]
+```
+
+MainLayout contiene nuestra definición general de la aplicación, que tiene como hijos los componentes Home y VerPersonaje. Cómo se inserta cada hijo en el MainLayout? Mediante el tag `<outlet>`, dentro de MainLayout:
+
+```html
+<pelela view-model="MainLayout">
+  <div class="card">
+    <h1>Rick & Morty</h1>
+    <main>
+      <!-- acá van los hijos -->
+      <outlet></outlet>
+    </main>
+    <footer>
+      <p>&copy; Algo3</p>
+    </footer>
+  </div>
+</pelela>
+```
+
+Cuando en la URL escribimos `localhost:5173/personajes`, el match se hace 1. con el MainLayout pero también con 2. Home, solo porque en nuestro MainLayout no definimos una ruta base. Si hubiéramos definido
+
+```ts
+export const routes: RouteDefinition[] = [
+  {
+    path: 'personajes',
+    layout: MainLayout,
+    children: [
+      { path: '/', component: Home },
+      { path: '/:identificador', component: VerPersonaje },
+    ],
+  },
+]
+```
+
+El resultado hubiera sido
+
+- URL: `localhost:5173/personajes` -> MainLayout + Home
+- URL: `localhost:5173/personajes/113` -> MainLayout + VerPersonaje
+
 
 ## Vista de detalle
 
