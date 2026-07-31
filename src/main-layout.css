@@ -1,0 +1,37 @@
+/* MainLayout styles */
+
+pelela[view-model="MainLayout"] {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  position: sticky;
+  bottom: 20px;
+  padding: 1rem 2rem;
+  background-color: #e2e8f0;
+  color: #64748b;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  margin: 1rem auto;
+}
+
+footer p {
+  margin: 0;
+}
+
+.card {
+  background: var(--card-bg);
+  width: 100%;
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
+}

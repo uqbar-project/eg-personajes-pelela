@@ -1,0 +1,11 @@
+<pelela view-model="MainLayout">
+  <div class="card">
+    <h1>Rick & Morty</h1>
+    <main>
+      <outlet></outlet>
+    </main>
+    <footer>
+      <p>&copy; Algo3</p>
+    </footer>
+  </div>
+</pelela>
