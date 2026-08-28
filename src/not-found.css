@@ -1,0 +1,39 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  color: var(--text-color);
+  background-color: #fdfbf5;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
+  max-width: 28rem;
+}
+
+.icon {
+  font-size: 4rem;
+  color: var(--primary-color);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.link {
+  padding: 0.75rem 1.5rem;
+  width: auto;
+  text-decoration: none;
+}

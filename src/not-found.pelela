@@ -1,0 +1,9 @@
+<pelela view-model="NotFound">
+  <div class="not-found">
+    <div class="card">
+      <span class="icon">🔍</span>
+      <h1 class="title">La página a la que querés navegar no existe</h1>
+      <button class="link" click="irAlHome">Ir al inicio</button>
+    </div>
+  </div>
+</pelela>
