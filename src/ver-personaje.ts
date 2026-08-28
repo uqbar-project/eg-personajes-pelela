@@ -11,6 +11,6 @@ export class VerPersonaje {
   }
 
   volver() {
-    router.navigateTo('/personajes')
+    router.navigateTo('/')
   }
 }

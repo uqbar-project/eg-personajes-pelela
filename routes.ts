@@ -9,9 +9,9 @@ export const routes: RouteDefinition[] = [
     path: '',
     layout: MainLayout,
     children: [
-      { path: '/personajes', component: Home },
+      { path: '', component: Home },
       { path: '/personaje/:identificador', component: VerPersonaje },
     ],
   },
-  { path: '*', component: NotFound }
+  { path: '*', component: NotFound },
 ]
