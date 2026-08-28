@@ -96,7 +96,7 @@ export const routes: RouteDefinition[] = [
     path: '',
     layout: MainLayout,
     children: [
-      { path: '/personajes', component: Home },
+      { path: '', component: Home },
       { path: '/personaje/:identificador', component: VerPersonaje },
     ],
   },
@@ -241,3 +241,23 @@ Si queremos que se visualice el mensaje de error por un tiempo, podemos aprovech
       }, 5000)
     }
 ```
+
+## Un último agregado: página de error 404
+
+Cuando la URL no coincide con ninguna ruta definida, la ruta `catch-all` (`*`) nos lleva a la página `NotFound`. Es una página minimalista que muestra un mensaje indicando que la página no existe, un ícono y un botón para volver al inicio:
+
+```ts
+export const routes: RouteDefinition[] = [
+  {
+    path: '',
+    layout: MainLayout,
+    children: [
+      { path: '', component: Home },
+      { path: '/personaje/:identificador', component: VerPersonaje },
+    ],
+  },
+  { path: '*', component: NotFound },
+]
+```
+
+Podemos ver que la ruta `*` está fuera del layout, por lo que esta página se muestra sin la card común de la aplicación. El botón "Ir al inicio" usa el `router.navigateTo('/')` del ViewModel para volver a la página home.
