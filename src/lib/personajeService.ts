@@ -29,6 +29,8 @@ type CharacterJSON = {
   created: string
 }
 
+class HttpError extends Error {}
+
 class PersonajeService {
   async buscarPersonaje(personajeBusqueda: string): Promise<Personaje[]> {
     const response = await this.get<CharactersJSON>(
@@ -45,28 +47,33 @@ class PersonajeService {
   }
 
   private async get<T>(url: string): Promise<T> {
-    let response: Response
     try {
-      response = await fetch(url)
-    } catch (err) {
+      const response = await fetch(url)
+
+      if (!response.ok) {
+        const errorBody = await response.text().catch(() => '')
+        throw this.buildHttpError(response, errorBody)
+      }
+
+      return (await response.json()) as T
+    } catch (error) {
+      if (error instanceof HttpError) {
+        throw error
+      }
+
       throw new Error('No pudimos conectar con el servidor. Probá de nuevo en unos minutos.', {
-        cause: err,
+        cause: error,
       })
     }
-    if (!response.ok) {
-      const body = await response.text().catch(() => '')
-      throw this.buildHttpError(response, body)
-    }
-    return response.json() as Promise<T>
   }
 
-  private buildHttpError(response: Response, body: string): Error {
+  private buildHttpError(response: Response, body: string): HttpError {
     const detail = this.detailFrom(body)
     const message =
       response.status >= 500
         ? 'Ocurrió un error en el servidor. Probá de nuevo en unos minutos.'
         : (detail ?? `No se encontró lo que buscás (error ${response.status}).`)
-    return new Error(message, {
+    return new HttpError(message, {
       cause: new Error(`HTTP ${response.status}${detail ? `: ${detail}` : ''}`),
     })
   }
