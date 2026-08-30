@@ -41,9 +41,6 @@ class PersonajeService {
     const response = await this.get<CharacterJSON>(
       `${PUBLIC_API_BASE_URL}/${PUBLIC_API_VERSION}/character/${idPersonaje}`,
     )
-    if (!response) {
-      throw new Error(`No se encontró el personaje con identificador ${idPersonaje}`)
-    }
     return toPersonaje(response)
   }
 
@@ -52,13 +49,38 @@ class PersonajeService {
     try {
       response = await fetch(url)
     } catch (err) {
-      throw new Error('Error de red al consultar el servidor', { cause: err })
+      throw new Error('No pudimos conectar con el servidor. Probá de nuevo en unos minutos.', {
+        cause: err,
+      })
     }
     if (!response.ok) {
       const body = await response.text().catch(() => '')
-      throw new Error(`Error ${response.status} al obtener datos de ${url}: ${body}`)
+      throw this.buildHttpError(response, body)
     }
     return response.json() as Promise<T>
+  }
+
+  private buildHttpError(response: Response, body: string): Error {
+    const detail = this.detailFrom(body)
+    const message =
+      response.status >= 500
+        ? 'Ocurrió un error en el servidor. Probá de nuevo en unos minutos.'
+        : (detail ?? `No se encontró lo que buscás (error ${response.status}).`)
+    return new Error(message, {
+      cause: new Error(`HTTP ${response.status}${detail ? `: ${detail}` : ''}`),
+    })
+  }
+
+  private detailFrom(body: string): string | undefined {
+    if (!body) {
+      return undefined
+    }
+    try {
+      const { error } = JSON.parse(body) as { error?: string }
+      return error || body
+    } catch {
+      return body
+    }
   }
 }
 

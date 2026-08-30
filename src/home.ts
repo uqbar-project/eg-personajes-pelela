@@ -1,4 +1,5 @@
 import { router } from 'pelelajs'
+import { handleError } from './lib/errorHandler'
 import type { Personaje } from './lib/personaje'
 import { personajeService } from './lib/personajeService'
 
@@ -11,11 +12,7 @@ export class Home {
     try {
       this.personajes = await personajeService.buscarPersonaje(this.personajeABuscar)
     } catch (error: unknown) {
-      console.error(error)
-      this.mensajeError = (error as Error).message
-      setTimeout(() => {
-        this.mensajeError = ''
-      }, 5000)
+      handleError(error, this)
     }
   }
 
