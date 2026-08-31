@@ -1,7 +1,7 @@
 import { Personaje } from './personaje'
 
 // Cambia tu fetch actual por la nueva dirección estática:
-const PUBLIC_API_BASE_URL = 'https://rickandmortyapi.com/apix'
+const PUBLIC_API_BASE_URL = 'https://rickandmortyapi.com/api'
 const PUBLIC_API_VERSION = ''
 
 type CharactersJSON = {
@@ -39,7 +39,7 @@ export class HttpError extends Error {
 }
 
 class PersonajeService {
-  async buscarPersonaje(personajeBusqueda: string): Promise<Personaje[]> {
+  async buscarPersonajes(personajeBusqueda: string): Promise<Personaje[]> {
     const response = await this.get<CharactersJSON>(
       `${PUBLIC_API_BASE_URL}/${PUBLIC_API_VERSION}/character/?name=${personajeBusqueda}`,
     )

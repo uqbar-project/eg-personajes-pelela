@@ -10,7 +10,7 @@ export class Home {
 
   async buscar(): Promise<void> {
     try {
-      this.personajes = await personajeService.buscarPersonaje(this.personajeABuscar)
+      this.personajes = await personajeService.buscarPersonajes(this.personajeABuscar)
     } catch (error: unknown) {
       handleError(error, this)
     }
