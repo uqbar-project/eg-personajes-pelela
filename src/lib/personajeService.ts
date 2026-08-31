@@ -1,7 +1,7 @@
 import { Personaje } from './personaje'
 
 // Cambia tu fetch actual por la nueva dirección estática:
-const PUBLIC_API_BASE_URL = 'https://rickandmortyapi.com/api'
+const PUBLIC_API_BASE_URL = 'https://rickandmortyapi.com/apix'
 const PUBLIC_API_VERSION = ''
 
 type CharactersJSON = {
@@ -29,7 +29,14 @@ type CharacterJSON = {
   created: string
 }
 
-class HttpError extends Error {}
+export class HttpError extends Error {
+  readonly user: boolean
+
+  constructor(mensaje: string, options: { cause?: unknown; user: boolean }) {
+    super(mensaje, { cause: options.cause })
+    this.user = options.user
+  }
+}
 
 class PersonajeService {
   async buscarPersonaje(personajeBusqueda: string): Promise<Personaje[]> {
@@ -69,12 +76,13 @@ class PersonajeService {
 
   private buildHttpError(response: Response, body: string): HttpError {
     const detail = this.detailFrom(body)
-    const message =
-      response.status >= 500
-        ? 'Ocurrió un error en el servidor. Probá de nuevo en unos minutos.'
-        : (detail ?? `No se encontró lo que buscás (error ${response.status}).`)
+    const user = response.status < 500
+    const message = user
+      ? (detail ?? `No se encontró lo que buscás (error ${response.status}).`)
+      : 'Ocurrió un error en el servidor. Probá de nuevo en unos minutos.'
     return new HttpError(message, {
       cause: new Error(`HTTP ${response.status}${detail ? `: ${detail}` : ''}`),
+      user,
     })
   }
 
