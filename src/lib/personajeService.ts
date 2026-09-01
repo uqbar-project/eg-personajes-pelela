@@ -91,7 +91,7 @@ class PersonajeService {
       return undefined
     }
     try {
-      const { error, message } = JSON.parse(body) as { error?: string, message?: string }
+      const { error, message } = JSON.parse(body) as { error?: string; message?: string }
       return message || error || body
     } catch {
       return body
