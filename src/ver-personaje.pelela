@@ -9,6 +9,8 @@
     <div bind-content="personaje.estado" class="state"></div>
     <div bind-content="personaje.genero"></div>
   </div>
-  <button data-testid="volver" class="botonera" click="volver">Volver</button>
+  <div class="botonera">
+    <button data-testid="volver" click="volver">Volver</button>
+  </div>
   <div class="mensaje-error" if="mensajeError" bind-content="mensajeError">
 </pelela>
