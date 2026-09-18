@@ -6,8 +6,8 @@ import { VerPersonaje } from './src/ver-personaje'
 
 export const routes: RouteDefinition[] = [
   {
-    path: '',
     layout: MainLayout,
+    path: '/',
     children: [
       { path: '', component: Home },
       { path: '/personaje/:identificador', component: VerPersonaje },

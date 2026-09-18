@@ -16,7 +16,7 @@ export class Home {
     }
   }
 
-  verPersonaje({ personaje }: { personaje: Personaje }) {
+  verPersonaje = ({ personaje }: { personaje: Personaje }) => {
     router.navigateTo(`/personaje/${personaje.id}`)
   }
 }

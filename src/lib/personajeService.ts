@@ -1,7 +1,8 @@
 import { Personaje } from './personaje'
 
 // Cambia tu fetch actual por la nueva dirección estática:
-const PUBLIC_API_BASE_URL = 'https://rickandmortyapi.com/api'
+// const PUBLIC_API_BASE_URL = 'http://localhost:3000'
+const PUBLIC_API_BASE_URL =  'https://rickandmortyapi.com/api'
 const PUBLIC_API_VERSION = ''
 
 type CharactersJSON = {
